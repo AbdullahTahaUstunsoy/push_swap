@@ -56,7 +56,7 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
         new->next = NULL;
 }
 
-t_stack	*ft_lstlast2(t_stack *lst)
+t_stack	*ft_lstlast2(t_stack *lst) //lstlast2,lstlast3 ve aksiyonlar için kontrol edilecek case durumları eklenebilir.e
 {
 	if (lst == NULL)
 		return (NULL);
