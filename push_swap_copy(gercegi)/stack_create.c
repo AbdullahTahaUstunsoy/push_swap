@@ -52,7 +52,7 @@ t_stack **index_assignment(t_stack **stack_a){
 		return (stack_a);
 }
 
-
+/* önceki create_stack fonksiyonum
 t_stack **create_stack(t_stack **stack_a,int argc,char *args){
     int i;
     t_stack *new;
@@ -70,4 +70,45 @@ t_stack **create_stack(t_stack **stack_a,int argc,char *args){
 		i++;	
     }
     return (stack_a);
+}*/
+
+//güncellediğim create_stack fonksiyonum 
+
+
+t_stack **create_stack(t_stack **stack_a, int argc, char *args) {
+    int i;
+    t_stack *new;
+    char **split_args;  // ft_split ile dönen char **'yi burada tutacağız.
+
+    i = 0;
+    split_args = ft_split(args, ' ');  // args'ı boşluklara göre ayırıyoruz.
+
+    if (split_args == NULL) {
+        printf("ft_split returned NULL\n");
+        return stack_a;
+    }
+
+    // split_args NULL değilse, her bir argümanı stack'a ekleyelim
+    while (split_args[i] != NULL) {
+        printf("Adding %s to stack\n", split_args[i]);  // Debugging çıktısı ekleyelim
+        new = ft_lstnew(ft_atoi(split_args[i]));  // Elemanı oluşturuyoruz.
+        if (new == NULL) {
+            free_args(split_args);  // Bellek sızıntısı olmasın diye temizliyoruz.
+            print_error();
+        }
+        ft_lstadd_back(stack_a, new);  // Yeni node'u stack'a ekliyoruz.
+        i++;
+    }
+
+    // split_args'ı serbest bırakıyoruz.
+    free_args(split_args);
+
+    // Stack'ın başındaki elemanı kontrol edelim.
+    if (*stack_a == NULL) {
+        printf("Stack is NULL after creation.\n");
+    } else {
+        printf("Stack created successfully.\n");
+    }
+
+    return stack_a;  // stack_a'yı döndürüyoruz.
 }
