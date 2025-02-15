@@ -35,54 +35,53 @@ long ft_atoi(const char *str)
 	}
 	return (result * sign);
 }
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*ptr;
+	size_t	i;
+	size_t	j;
 
-char *ft_join3(int argc,char **argv,char *str){
-
-	int i;
-	int j;
-	int k;
-
-	i = 1;
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
+	ptr = (char *)malloc(sizeof(char) * ft_strlen(s1) + sizeof(char)
+			* ft_strlen(s2) + 1);
+	if (ptr == NULL)
+		return (NULL);
+	i = 0;
+	while (i < ft_strlen(s1))
+	{
+		ptr[i] = s1[i];
+		i++;
+	}
 	j = 0;
-	while(i < argc){
-        k = 0;
-        while(argv[i] != NULL && argv[i][k] != '\0'){
-            str[j] = argv[i][k++];
-            j++;
-    }
-    if (i != argc - 1) //son argümanı eklerken sona space koymasın.
-        str[j++] = ' '; // boşluk ekledikten sonra döngüye girerken doğru konumda olmak için. str [j++] yaptık      
-    i++;
-  }
-    str[j] = '\0';
-
-  	return (str);
+	while (j < ft_strlen(s2))
+	{
+		ptr[i + j] = s2[j];
+		j++;
+	}
+	ptr[i + j] = '\0';
+	return (ptr);
 }
 
-char *ft_join2(int argc, char **argv){
+char	*ft_strdup(const char *s1)
+{
+	int		i;
+	char	*ptr;
 
-	char *str;
-	int i;
-	int j;
-	int size;
-
-	i = 1;
-	size = 0;
-
-	while (i < argc){
-        j = 0;
-        while(argv[i] != NULL && argv[i][j] != '\0'){            
-            size++;
-            j++;
-        }
-        size--; // \0 saymasin birleştirirken ekleyeceğiz 
-        i++;
-    }
-
-	str = (char *)malloc(sizeof(char) * size + 1 + (argc -1 -1));
-	if (str == NULL)
-		exit (0);
-	return (ft_join3(argc,argv,str));
+	i = 0;
+	while (s1[i] != '\0')
+		i++;
+	ptr = (char *)malloc(i * sizeof(char) + 1);
+	if (ptr == NULL)
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		ptr[i] = s1[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }
 
 t_stack	*ft_lstlast3(t_stack *lst)

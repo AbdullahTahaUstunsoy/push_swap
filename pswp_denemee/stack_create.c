@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include <stdio.h>
 
 int	is_sorted(t_stack **stack)
 {
@@ -37,7 +38,7 @@ t_stack *get_next_min(t_stack **stack_a){
   }
 
 
-t_stack **index_assignment(t_stack **stack_a){
+void index_assignment(t_stack **stack_a){
 
 		t_stack *current_min;
 		int index;
@@ -49,33 +50,20 @@ t_stack **index_assignment(t_stack **stack_a){
 			index++;
 		}
 
-		return (stack_a);
 }
 
 
-t_stack **create_stack(t_stack **stack_a, int argc, char *args) {
-    int i;
-    t_stack *new;
-    char **split_args;  // `ft_split` ile dönen string dizisini tutacağız.
+void	create_stack(t_stack **stack_a, char **args)
+{
+	t_stack	*new;
+	int		i;
 
-    i = 0;
-    split_args = ft_split(args, ' ');  // `args` stringini ayırıyoruz.
-
-    if (split_args == NULL) {
-        return stack_a;
-    }
-
-    // `split_args` üzerinden geçerek her bir elemanı `t_stack` olarak ekleyelim.
-    while (split_args[i] != NULL) {
-        new = ft_lstnew(ft_atoi(split_args[i]));  // Yeni düğümü oluşturuyoruz.
-        if (new == NULL) {
-            free_args(split_args);  // Bellek sızıntısını önleyelim.
-            print_error();
-        }
-        ft_lstadd_back(stack_a, new);  // `stack_a`'ya ekleyelim.
-        i++;
-    }
-
-    free_args(split_args);  // `split_args`'ı serbest bırak.
-    return stack_a;
+	i = 0;
+	while (args[i] != NULL)
+	{
+		new = ft_lstnew(ft_atoi(args[i]));
+		ft_lstadd_back(stack_a, new);
+		i++;
+	}
+	index_assignment(stack_a);
 }

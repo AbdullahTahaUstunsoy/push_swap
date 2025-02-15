@@ -30,6 +30,8 @@ long ft_atoi(const char *str); //utils1.c
 size_t	ft_strlen(const char *s);
 char *ft_join2(int argc, char **argv);
 char *ft_join3(int argc,char **argv,char *str);
+char *ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup(const char *s1);
 
 static void	*del(char **ptr, int len); //ft_split.c
 char	*ft_substr(char const *s, unsigned int start, size_t len);  
@@ -37,8 +39,8 @@ static int	ft_count_words(char const *s, char c);
 static int	ft_count_chars(char const *s, char c);
 char	**ft_split(char const *s, char c);
 
-t_stack **create_stack(t_stack **a, int argc, char *str); //stack_create.c
-t_stack **index_assignment(t_stack **stack_a);
+void	create_stack(t_stack **stack_a, char **args); //stack_create.c
+void index_assignment(t_stack **stack_a);
 t_stack *get_next_min(t_stack **stack_a);
 int	is_sorted(t_stack **stack);
 
@@ -48,6 +50,8 @@ t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 t_stack	*ft_lstlast2(t_stack *lst);
 t_stack	*ft_lstlast3(t_stack *lst);
+
+char **join_args(int argc, char **argv);
 
 void swap(t_stack **stack); //actions1.c
 void sa(t_stack **stack_a);
@@ -78,5 +82,10 @@ void	radix_sort(t_stack **a, t_stack **b);
 void	ft_sort(t_stack **a, t_stack **b, int size);
 int	get_position(t_stack **stack, int inx);
 int	get_min(t_stack **stack, int val);
+
+
+char *join_with_space(char *joined , char *arg);//utils3.c
+char **join_args(int argc, char **argv);
+
 
 #endif 
