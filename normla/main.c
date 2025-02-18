@@ -37,6 +37,7 @@ int	main(int argc, char **argv)
 	create_stack(a, args);
 	if (is_sorted(a))
 	{
+		free_args(args);
 		free_stack(a, b);
 		return (0);
 	}
