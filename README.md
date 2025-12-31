@@ -1,5 +1,3 @@
-# Push_swap - Because Sorting is Better with Two Stacks
-
 Bu proje, iki stack (yığın) kullanarak verilen sayı dizisini en az hamleyle sıralamayı amaçlayan bir algoritma projesidir. 42 School müfredatının bir parçası olarak, veri yapıları ve algoritmik verimlilik (Big O) üzerine odaklanır.
 
 ---
